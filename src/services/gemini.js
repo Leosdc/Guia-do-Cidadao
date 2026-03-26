@@ -1,7 +1,7 @@
 // Google Gemini 2.5 API Integration Service (Secure Proxy via Cloud Functions)
 
 // Prompts and API Key are SECURELY handled in the backend.
-const CLOUD_FUNCTION_URL = "/api"; 
+const CLOUD_FUNCTION_URL = "https://analyzedocument-3jxiuen5qa-uc.a.run.app"; 
 
 export async function analyzeDocument(imageFile) {
   const base64Data = await new Promise((resolve) => {

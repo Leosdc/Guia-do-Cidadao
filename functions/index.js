@@ -38,13 +38,8 @@ exports.analyzeDocument = onRequest({
   secrets: [geminiApiKey],
   memory: "512MiB",
   region: "us-central1",
-  cors: true
+  cors: ['https://leosdc.github.io', 'http://localhost:5173']
 }, async (req, res) => {
-  // Robust CORS fallback
-  res.set('Access-Control-Allow-Origin', '*');
-  res.set('Access-Control-Allow-Methods', 'POST, OPTIONS');
-  res.set('Access-Control-Allow-Headers', 'Content-Type');
-
   console.log("Analyze request received. Method:", req.method);
 
   if (req.method === "OPTIONS") {
