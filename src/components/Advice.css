@@ -31,6 +31,7 @@
   font-weight: 800;
   background: linear-gradient(to right, #fff, #94a3b8);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   margin-bottom: 1rem;
   letter-spacing: -0.02em;
@@ -146,6 +147,7 @@
   font-size: 2.5rem;
   background: linear-gradient(to right, #10b981, #34d399);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
@@ -229,7 +231,16 @@
 }
 
 @media (max-width: 768px) {
-  .advice-header h2 { font-size: 2.5rem; }
-  .textarea-wrapper { padding: 1.5rem; }
-  .result-grid { grid-template-columns: 1fr; }
+  .advice-header h2 { font-size: 2.2rem; }
+  .advice-header p { font-size: 1.1rem; }
+  .textarea-wrapper { padding: 1.5rem; border-radius: 24px; }
+  .textarea-wrapper textarea { min-height: 200px; font-size: 1.1rem; }
+  .result-grid { grid-template-columns: 1fr; gap: 1rem; }
+  .result-header h2 { font-size: 1.8rem; }
+  .result-card { padding: 1.25rem; }
+}
+
+@media (max-width: 480px) {
+  .advice-header h2 { font-size: 1.8rem; }
+  .send-btn { font-size: 1rem; padding: 1rem; }
 }

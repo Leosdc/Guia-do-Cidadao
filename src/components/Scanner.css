@@ -231,3 +231,21 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+@media (max-width: 768px) {
+  .drop-zone {
+    padding: 2.5rem 1.5rem;
+    aspect-ratio: auto;
+    min-height: 250px;
+  }
+  .result-section {
+    padding: 1.5rem;
+    border-radius: 24px;
+  }
+  .result-header h2 {
+    font-size: 1.6rem;
+  }
+  .result-card {
+    padding: 1.25rem;
+  }
+}
