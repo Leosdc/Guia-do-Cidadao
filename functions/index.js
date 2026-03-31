@@ -5,6 +5,36 @@ const mammoth = require("mammoth");
 
 admin.initializeApp();
 
+async function fetchWithRetry(url, options, maxRetries = 3) {
+  for (let attempt = 0; attempt < maxRetries; attempt++) {
+    try {
+      const response = await fetch(url, options);
+      
+      // Retry on 429 (Rate Limit) or 5xx (Server Error)
+      if (response.status === 429 || (response.status >= 500 && response.status <= 599)) {
+        console.warn(`Gemini API returned ${response.status}. Attempt ${attempt + 1} of ${maxRetries}. Retrying in background...`);
+        
+        if (attempt < maxRetries - 1) {
+          // Exponential backoff: 1s, 2s, 4s... plus some jitter
+          const delay = Math.pow(2, attempt) * 1000 + Math.random() * 1000;
+          await new Promise(resolve => setTimeout(resolve, delay));
+          continue;
+        }
+      }
+      return response;
+    } catch (error) {
+      console.error(`Fetch attempt ${attempt + 1} failed:`, error.message);
+      if (attempt < maxRetries - 1) {
+        const delay = Math.pow(2, attempt) * 1000 + Math.random() * 1000;
+        await new Promise(resolve => setTimeout(resolve, delay));
+      } else {
+        throw error;
+      }
+    }
+  }
+}
+
+
 // Define the secret
 const geminiApiKey = defineSecret("GEMINI_API_KEY");
 
@@ -105,7 +135,7 @@ exports.analyzeDocument = onRequest({
       }];
     }
 
-    const apiResponse = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${MODEL_NAME}:generateContent?key=${API_KEY}`, {
+    const apiResponse = await fetchWithRetry(`https://generativelanguage.googleapis.com/v1beta/models/${MODEL_NAME}:generateContent?key=${API_KEY}`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ 

@@ -39,7 +39,11 @@ export default function Scanner() {
       setResult(parsed)
     } catch (err) {
       console.error(err)
-      setError("Não conseguimos analisar este documento. Verifique o arquivo e tente novamente.")
+      if (err.message?.includes('429')) {
+        setError("O servidor está um pouco ocupado. Por favor, aguarde alguns segundos e tente novamente.")
+      } else {
+        setError("Não conseguimos analisar este documento. Verifique o arquivo e tente novamente.")
+      }
     } finally {
       setLoading(false)
     }

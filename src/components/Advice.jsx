@@ -25,7 +25,11 @@ export default function Advice() {
       setResult(parsed)
     } catch (err) {
       console.error(err)
-      setError("Não conseguimos analisar seu relato. Tente descrever com mais detalhes.")
+      if (err.message?.includes('429')) {
+        setError("O servidor está um pouco ocupado. Por favor, aguarde alguns segundos e tente novamente.")
+      } else {
+        setError("Não conseguimos analisar seu relato. Tente descrever com mais detalhes.")
+      }
     } finally {
       setLoading(false)
     }
