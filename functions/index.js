@@ -51,7 +51,7 @@ Sua missão é ler documentos jurídicos brasileiros e extrair a essência para 
   - valores: (Valores em jogo, multas ou cobranças)
   - acao: (O que o usuário deve fazer agora)
   - proximo_passo: (Dica de Defensoria ou Juizado)
-  - embasamento_legal: (Citação das leis e artigos brasileiros que fundamentam esta análise. Se não houver fundamentação legal clara no Direito Brasileiro atual, retorne este campo vazio. NUNCA invente leis ou normas.)`;
+  - embasamento_legal: (Identifique a base jurídica brasileira. Cite leis como o Código de Processo Civil (CPC), Código de Defesa do Consumidor (CDC), CLT ou Código Civil. Obrigatório: Em caso de insegurança ou se a norma não for clara, retorne este campo vazio. NUNCA invente leis ou normas.)`;
 
 const ADVICE_PROMPT = (text) => `Atue como o 'Guia do Cidadão'. 
 O usuário descreveu a seguinte situação: "${text}"
@@ -65,7 +65,7 @@ Analise se há direitos que podem ser buscados na justiça ou via advogados.
   - recomendacao: (O que fazer: procurar advogado, defensoria, etc)
   - probabilidade: (Baixa, Média ou Alta de sucesso baseado no relato)
   - proximo_passo: (Ação imediata recomendada)
-  - embasamento_legal: (Qual lei, artigo ou código do ordenamento jurídico brasileiro se aplica. Se a situação for inconclusiva ou não tiver fundamentação explícita, retorne este campo vazio. NUNCA invente nomes de leis.)`;
+  - embasamento_legal: (Cite a fundamentação legal brasileira, como CDC, CLT, Código Civil ou CF. Obrigatoriamente: Em caso de insegurança jurídica ou se não encontrar a base exata, retorne este campo vazio. NUNCA invente diretrizes inexistentes.)`;
 
 exports.analyzeDocument = onRequest({ 
   secrets: [geminiApiKey],
