@@ -115,10 +115,22 @@ export default function Scanner() {
               <h4>💡 O que fazer agora?</h4>
               <p>{result.acao}</p>
             </div>
+
+            {result.embasamento_legal && (
+              <div className="result-card legal">
+                <h4>⚖️ Embasamento Legal</h4>
+                <p>{result.embasamento_legal}</p>
+              </div>
+            )}
           </div>
 
           <div className="next-steps">
             <p><strong>Dica:</strong> {result.proximo_passo}</p>
+          </div>
+
+          <div className="legal-disclaimer">
+            <AlertCircle size={14} />
+            <p>Este conteúdo tem caráter meramente informativo e educacional. Não substitui a consulta a um advogado ou defensor público.</p>
           </div>
 
           <button className="reset-btn" onClick={() => {setResult(null); setFile(null); setPreview(null)}}>
