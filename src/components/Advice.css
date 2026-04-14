@@ -183,6 +183,12 @@
   border-color: rgba(16, 185, 129, 0.2);
 }
 
+.result-card.legal {
+  background: rgba(59, 130, 246, 0.05);
+  border-color: rgba(59, 130, 246, 0.2);
+  grid-column: 1 / -1;
+}
+
 .result-card h4 {
   color: var(--text-secondary);
   font-size: 0.9rem;
@@ -195,6 +201,24 @@
   font-size: 1.2rem;
   line-height: 1.6;
   color: #f1f5f9;
+}
+
+.legal-disclaimer {
+  margin-top: 3rem;
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  background: rgba(255, 255, 255, 0.01);
+  border-radius: 0 0 24px 24px;
+}
+
+.legal-disclaimer p {
+  line-height: 1.5;
+  margin: 0;
 }
 
 .reset-btn {
