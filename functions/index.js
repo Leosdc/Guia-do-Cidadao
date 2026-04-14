@@ -50,7 +50,8 @@ Sua missão é ler documentos jurídicos brasileiros e extrair a essência para 
   - prazos: (Quais os prazos fatais identificados)
   - valores: (Valores em jogo, multas ou cobranças)
   - acao: (O que o usuário deve fazer agora)
-  - proximo_passo: (Dica de Defensoria ou Juizado)`;
+  - proximo_passo: (Dica de Defensoria ou Juizado)
+  - embasamento_legal: (Citação das leis e artigos brasileiros que fundamentam esta análise. Se não houver fundamentação legal clara no Direito Brasileiro atual, retorne este campo vazio. NUNCA invente leis ou normas.)`;
 
 const ADVICE_PROMPT = (text) => `Atue como o 'Guia do Cidadão'. 
 O usuário descreveu a seguinte situação: "${text}"
@@ -58,11 +59,13 @@ Analise se há direitos que podem ser buscados na justiça ou via advogados.
 - Use linguagem simples e acolhedora.
 - Explique se a pessoa tem realmente um direito (possibilidade jurídica).
 - Sugira se o caso é para Defensoria Pública, Juizado Civil ou Advogado Particular.
+- Importante: Sua resposta tem caráter meramente informativo e educacional.
 - Responda em formato JSON com os seguintes campos:
   - analise: (Explicação simples se há direito ou não)
   - recomendacao: (O que fazer: procurar advogado, defensoria, etc)
   - probabilidade: (Baixa, Média ou Alta de sucesso baseado no relato)
-  - proximo_passo: (Ação imediata recomendada)`;
+  - proximo_passo: (Ação imediata recomendada)
+  - embasamento_legal: (Qual lei, artigo ou código do ordenamento jurídico brasileiro se aplica. Se a situação for inconclusiva ou não tiver fundamentação explícita, retorne este campo vazio. NUNCA invente nomes de leis.)`;
 
 exports.analyzeDocument = onRequest({ 
   secrets: [geminiApiKey],
