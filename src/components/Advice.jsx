@@ -119,6 +119,23 @@ export default function Advice() {
                 <h4>💡 O que fazer agora?</h4>
                 <p>{result.proximo_passo}</p>
               </motion.div>
+
+              {result.embasamento_legal && (
+                <motion.div 
+                  className="result-card legal" 
+                  initial={{ opacity: 0, scale: 0.9 }} 
+                  animate={{ opacity: 1, scale: 1 }} 
+                  transition={{ delay: 0.5 }}
+                >
+                  <h4>⚖️ Base Legal e Técnica</h4>
+                  <p>{result.embasamento_legal}</p>
+                </motion.div>
+              )}
+            </div>
+
+            <div className="legal-disclaimer">
+              <AlertCircle size={14} />
+              <p>Este conteúdo tem caráter meramente informativo e educacional. Não substitui a consulta a um advogado ou defensor público.</p>
             </div>
 
             <motion.button 
